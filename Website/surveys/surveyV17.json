@@ -1,0 +1,282 @@
+{
+    "title": "MSLQ: Expectancy for Success and Self-Efficacy",
+    "showCompletedPage": false,
+    "triggers": [
+        {
+            "type": "complete",
+            "expression": "{consent} = false"
+        }
+    ],
+    "pages": [
+        {
+            "name": "Information brief + consent form",
+            "elements": [
+                {
+                    "type": "html",
+                    "name": "heading",
+                    "html": "<section><h4>Informed Consent Form</h4><p>This document gives you information about the digital user study for perceived programming difficulty and the role of feedback. Before the study begins, it is important that you learn about the procedure followed in this study and that you give your informed consent for voluntary participation. Please read this document carefully.</p><h4>Aim and Benefit of the Study</h4><p>Programming can be perceived as a “scary” and difficult task by new students, while having the ability to have computer fluency through programming can be a strong beneficial ability in this world. This research explores how different design roles, and the way in which they provide feedback, may influence the self-efficacy of students and their perceived difficulty of programming.</p><h4>Procedure</h4><p>The study lasts for roughly 15 minutes.</p><p><strong>Procedure:</strong></p><ol><li>Reading this information brief + consent form</li><li>Signing consent (clicking a button)</li><li>Filling in a questionnaire on demographics of student and self-efficacy in programming</li><li>Run experiment: You will do a programming exercise, whilst receiving feedback</li><li>Filling in a closing questionnaire on self-efficacy and perceived difficulty once again</li></ol><p><em>Notice: The student may stop the study at any point in time.</em></p><h4>Risks</h4><p>The study does not involve any risks or detrimental side effects.</p><h4>Data Collection</h4><p>The study will collect the following data:</p><ul><li>Questionnaire and survey answers from opening survey</li><li>The feedback received during the exercise</li><li>Questionnaire answers from closing</li></ul><h4>Duration</h4><p>The data collected will be available on the researcher’s TUE OneDrive for a period of 6 months. After this the data will be deleted.</p><h4>Voluntary Participation</h4><p>Your participation is completely voluntary. You can refuse to participate without giving any reasons and you can stop your participation at any time during the study. You can also withdraw your permission to use your data up to 24 hours after the study is finished. All this will have no negative consequences whatsoever.</p><h4>Confidentiality</h4><p>For your information, this study involves data recording. Only the researcher will be able to view your data and they will be used only for scientific analysis.</p><p>The information that we collect from this study is also used for writing scientific publications and will mainly be reported at a quantitative level. It will be completely anonymous, and it cannot be traced back to you. Neither your name nor any other identifying information will be used in presentations or in written products resulting from the study without your written consent.</p><h4>Further Information</h4><p>If you want more information about this study, or want to withdraw from the study, please contact Jesse Strijker (email: <a href='mailto:j.j.strijker@student.tue.nl'>j.j.strijker@student.tue.nl</a>).</p><p>If you have any complaints about this study, please contact Regina Bernhaupt (email: <a href='mailto:r.bernhaupt@tue.nl'>r.bernhaupt@tue.nl</a>).</p><h4>Certificate of Consent</h4><p>I, have read and understood this consent form and have been given the opportunity to ask questions.</p><p>I have the following responsibilities: performing an exercise and participating in the questionnaires to the best of my ability.</p></section>"
+                },
+                {
+                    "type": "boolean",
+                    "isRequired": true,
+                    "name": "consent",
+                    "title": "I give consent",
+                    "requiredErrorText": "You must check this box to consent."
+                }
+            ]
+        },
+        {
+            "name": "page1",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "cs_courses_university",
+                    "isRequired": true,
+                    "title": "Did you take computer science or programming related courses in university? ",
+                    "choices": [
+                        "I took one computer programming related course in university",
+                        "I took more than one computer programming related course in university",
+                        "Never"
+                    ]
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "cs_courses_highschool",
+                    "isRequired": true,
+                    "title": "Did you take computer science or programming courses in high school? ",
+                    "choices": [
+                        "I took one computer programming course at high school",
+                        "I took more than one computer programming course at high school",
+                        "Never"
+                    ]
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "self_learning_time",
+                    "isRequired": true,
+                    "title": "How much time do you spend on self-learning programming outside of school? ",
+                    "choices": [
+                        "A lot of time",
+                        "Sometime",
+                        "Little time",
+                        "No time"
+                    ]
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "programming_self_description",
+                    "isRequired": true,
+                    "title": "How would you like to describe yourself in terms of programming? ",
+                    "choices": [
+                        "Have a lot of experience in programming",
+                        "Have some experience in programming",
+                        "Have very limited experience in programming",
+                        "Have no experience in programming"
+                    ]
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "programming_confidence",
+                    "isRequired": true,
+                    "title": "How confident are you in your ability of programming? ",
+                    "choices": [
+                        "Very confident",
+                        "Somewhat confident",
+                        "Not confident at all"
+                    ]
+                },
+                {
+                    "type": "rating",
+                    "name": "programming_experience_vs_experts",
+                    "isRequired": true,
+                    "title": "How do you estimate your programming experience compared to experts with 20 years of practical experience? ",
+                    "rateMin": 1,
+                    "rateMax": 5
+                },
+                {
+                    "type": "rating",
+                    "name": "programming_experience_vs_classmates",
+                    "isRequired": true,
+                    "title": "How do you estimate your programming experience compared to your classmates? ",
+                    "rateMin": 1,
+                    "rateMax": 5
+                },
+                {
+                    "type": "rating",
+                    "name": "java_experience",
+                    "isRequired": true,
+                    "title": "How experienced are you with the following language: C++ (arduino language)",
+                    "rateMin": 1,
+                    "rateMax": 5
+                },
+                {
+                    "type": "text",
+                    "name": "additional_languages",
+                    "isRequired": true,
+                    "title": "How many additional languages do you know (medium experience or better)? ",
+                    "inputType": "number"
+                },
+                {
+                    "type": "rating",
+                    "name": "object_oriented",
+                    "isRequired": true,
+                    "title": "How experienced are you with the following programming term: object-oriented programming?",
+                    "rateMin": 1,
+                    "rateMax": 5
+                },
+                {
+                    "type": "rating",
+                    "name": "functional_programming",
+                    "isRequired": true,
+                    "title": "How experienced are you with the following programming term: functional programming? (Functional does not just mean 'working' code)",
+                    "rateMin": 1,
+                    "rateMax": 5
+                },
+                {
+                    "type": "text",
+                    "name": "years_programming",
+                    "isRequired": true,
+                    "title": "For how many years have you been programming? ",
+                    "inputType": "number"
+                },
+                {
+                    "type": "text",
+                    "name": "years_large_projects",
+                    "isRequired": true,
+                    "title": "If applicable, for how many years have you been programming for larger software projects, e.g., in a company? (fill in 0 if not applicable) ",
+                    "inputType": "number"
+                }
+            ]
+        },
+        {
+            "name": "expectancy_scale",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "item5",
+                    "isRequired": true,
+                    "title": "I believe I will receive an excellent grade in this course. (If you are not currently in a programming course, please answer this question as if you were in a first year bachelors programming course on arduino.)",
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "item6",
+                    "isRequired": true,
+                    "title": "I'm certain I can understand the most [u]difficult[/u] programming material presented to me",
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "item12",
+                    "isRequired": true,
+                    "title": "I'm confident I can understand the [u]basic[/u] concepts taught in this course. (If you are not currently in a programming course, please answer this question as if you were in a first year bachelors programming course on arduino.)",
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "item20",
+                    "isRequired": true,
+                    "title": "I'm confident I can understand the most [u]complex[/u] programming material presented to me",
+                    "allowHtml": true,
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "item21",
+                    "isRequired": true,
+                    "title": "I'm confident I can do an excellent job on programming exercises",
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "item29",
+                    "isRequired": true,
+                    "title": "I expect to do well in this course. (If you are not currently in a programming course, please answer this question as if you were in a first year bachelors programming course on arduino.)",
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "item31",
+                    "isRequired": true,
+                    "title": "Considering the difficulty of this course, the teacher, and my skills, I think I will do well in programming exercises. (If you are not currently in a programming course, please answer this question as if you were in a first year bachelors programming course on arduino.)",
+                    "rateMin": 1,
+                    "rateMax": 7,
+                    "minRateDescription": "Not at all true of me",
+                    "maxRateDescription": "Very true of me"
+                },
+                {
+                    "type": "rating",
+                    "name": "difficulty_programming_general",
+                    "isRequired": true,
+                    "title": "In general, how difficult do programming problems appear to be for you?",
+                    "rateMin": 1,
+                    "rateMax": 5,
+                    "minRateDescription": "Not at all difficult",
+                    "maxRateDescription": "Very difficult"
+                },
+                {
+                    "type": "rating",
+                    "name": "easy_using_millis",
+                    "isRequired": true,
+                    "title": "How easy would completing a programming assignment on arduino delays() and millis() be for you?",
+                    "rateMin": 1,
+                    "rateMax": 9,
+                    "minRateDescription": "very little control/extremely difficult/not at all confident",
+                    "maxRateDescription": "complete control/extremely easy/completely confident"
+                },
+                {
+                    "type": "rating",
+                    "name": "effort_succesfull_complete",
+                    "isRequired": true,
+                    "title": "How much effort do you think it will take for you to successfully complete a problem on this topic?",
+                    "rateMin": 1,
+                    "rateMax": 5,
+                    "minRateDescription": "very little effort",
+                    "maxRateDescription": "more effort than 1 could possibly give"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "which_feedback_variant",
+                    "title": "Where are you seated in the classroom right now? (This question is only for randomization, if you are unsure, or if this does not apply to you, pick a random answer)",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": 1,
+                            "text": "Front left"
+                        },
+                        {
+                            "value": 2,
+                            "text": "Front right"
+                        },
+                        {
+                            "value": 3,
+                            "text": "Back left"
+                        },
+                        {
+                            "value": 4,
+                            "text": "Back right"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@wokwi/elements@1.4.5/dist/wokwi-elements.bundle.js"></script>
+    <link rel="stylesheet" href="css/editor_newV68.css">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <title>coding_exercise</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+
+    <!-- <wokwi-led id="led" color="red"></wokwi-led>
+    <button id="runButton">Run</button>
+    <button id="stopButton">Stop</button>
+    <textarea id="textArea" rows="20"></textarea>
+    <script type="module" src="main.js"></script> -->
+    <div id="overlay-intro">
+        <div class="overlay-content">
+            <h1>Welcome to the Arduino Coding Exercise!</h1>
+            <p>Most of you will be familiar with the arduino blink example:</p>
+            <pre><code>
+// the setup function runs once when you press reset or power the board
+void setup() {
+    pinMode(13, OUTPUT);    // initialize digital pin 13 as an output
+}
+
+// the loop function runs over and over again forever
+void loop() {
+    digitalWrite(13, HIGH); // turn the LED on (HIGH is the voltage level)
+    delay(1000);            // wait for a second
+    digitalWrite(13, LOW);  // turn the LED off by making the voltage LOW
+    delay(1000);            // wait for a second
+}
+                    </code></pre>
+            <p>This example uses <code>delay()</code>, which stops all other code from running during the wait time.
+                That makes it hard to do more than one thing at once.<br><br>
+
+                <b>Your task:</b> Rewrite this code so three LEDs on pins 13, 12 and 11 independently blink at 700 ms,
+                900 ms and 1300 ms using <code>millis()</code>. 
+                The full control of each led should be handled in a function that controls only one led.
+                No worries if you aren't certain how, an avatar will be providing you feedback on whatever you attempt.
+                You may use the internet, but try to avoid getting the complete answer from gpt, or complete answers in general.
+                <br><br><b>Tip:</b> For each LED, store the timestamp when you last toggled it, compare millis() to that
+                timestamp if its larger than an interval. 
+            </p>
+            <button id="start-button">Start</button>
+        </div>
+    </div>
+
+    <div id="feedbackbox">
+        <!-- <strong>Feedback:</strong><br> -->
+        <button id="prev-feedback" disabled></button>
+        <pre id="feedback">...</pre>
+        <button id="next-feedback" disabled></button>
+    </div>
+    <div id="arrow"></div>
+
+    <div class="app-container">
+        <div class="leds">
+            <wokwi-led color="green" id="13"></wokwi-led>
+            <wokwi-led color="red" id="12"></wokwi-led>
+            <wokwi-led color="blue" id="11"></wokwi-led>
+        </div>
+        <div class="toolbar">
+            <button id="run-button">Run</button>
+            <button id="stop-button" disabled>Stop</button>
+            <button id="revert-button" data-short="Revert">Revert code</button>
+            <button id="help-button">Instructions</button>
+            <button id="feedback-button" data-short="Feedback">Feedback</button>
+            <div class="vertical-separator"></div>
+            <button id="finish-button">Finish!</button>
+            <p id="finish-claim">(When you think you succesfully finished the assignment/or are really unable to solve
+                it. Click the finish button!)</p>
+            <div class="spacer"></div>
+            <div id="status-label"></div>
+        </div>
+        <div id="code-editor"></div>
+        <div class="compiler-output">
+            <pre id="compiler-output-text"></pre>
+            <pre id="serial-output-text"></pre>
+        </div>
+    </div>
+
+    <div id="avatar-container">
+        <img id="avatar-image" src="images/logo.png" alt="Tutor Avatar">
+    </div>
+    <div id="reminder">Reminder: You do not have to finish the assignment. If you are stuck, just click the finish button
+        and fill out the closing questionnaire</div>
+    <script type="module" src="mainV63.js"></script>
+</body>
+
+</html>

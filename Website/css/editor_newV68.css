@@ -1,0 +1,336 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-rows: auto 48px 1fr auto;
+    row-gap: 0.25rem;
+    column-gap: 0.5rem;
+    height: 95%;
+    max-width: 1400px;
+    margin: auto;
+    margin-top: 5px;
+    padding: 0.5rem 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.leds {
+    grid-row: 1;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0;
+    padding: 0 0.5rem;
+    height: 48px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.toolbar {
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    height: 48px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.toolbar p {
+    font-size: 0.7rem;
+    width: 35%;
+}
+
+.toolbar button {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 4px;
+    background: #007acc;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.toolbar button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.toolbar button:hover:not(:disabled) {
+    background: #005fa3;
+}
+
+.toolbar .spacer {
+    flex-grow: 1;
+}
+
+#status-label {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+#code-editor {
+    grid-row: 3;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    height: auto;
+    min-height: 0;
+}
+
+.compiler-output {
+    grid-row: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    min-height: 0;
+}
+
+.compiler-output pre {
+    margin: 0;
+    padding: 0.75rem;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: Consolas, monospace;
+    border-radius: 4px;
+    height: 120px;
+    overflow-y: auto;
+}
+
+#serial-output-text,
+#compiler-output-text {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #000000;
+    padding: 10px;
+    font-family: monospace;
+    border: 1px solid #ccc;
+}
+
+#feedbackbox {
+    position: fixed;
+    bottom: 165px;
+    right: 20px;
+    max-width: 800px;
+    max-height: 60vh;
+    background: #fff;
+    border: 2px solid #007acc;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    z-index: 20;
+}
+
+#finish-button {
+    background-color: red;
+}
+
+#prev-feedback,
+#next-feedback {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+#prev-feedback {
+    top: 0.75rem;
+    right: 0.75rem;
+}
+
+#prev-feedback::before {
+    content: "▲";
+}
+
+#next-feedback {
+    bottom: 0.75rem;
+    right: 0.75rem;
+}
+
+#next-feedback::before {
+    content: "▼";
+}
+
+#feedback {
+    margin: 0;
+    padding: 1.5rem 1rem;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+
+#arrow::before {
+    content: "";
+    position: absolute;
+    bottom: 150px;
+    right: 66px;
+    border-width: 14px 14px 0;
+    border-style: solid;
+    border-color: #007acc transparent;
+    width: 0;
+    z-index: 20;
+}
+
+#avatar-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 15;
+}
+
+#reminder {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 120px;
+    background-color: #aaa;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+#avatar-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background-color: #bbbbbb;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: 0.5rem;
+        grid-template-rows: auto 40px 1fr auto;
+    }
+
+    .toolbar {
+        height: 40px;
+    }
+
+    .toolbar button[data-short] {
+        font-size: 0;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .toolbar button[data-short]::after {
+        content: attr(data-short);
+        display: inline-block;
+        font-size: 0.85rem;
+        line-height: normal;
+        white-space: nowrap;
+    }
+
+    #feedbackbox {
+        bottom: 120px;
+        right: 10px;
+        max-width: 200px;
+    }
+
+    #avatar-container {
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+#overlay-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    line-height: 1.4;
+}
+
+#overlay-intro .overlay-content {
+    background: #fff;
+    padding: 2rem;
+    max-width: 700px;
+    max-height: 100vh;
+    width: 90%;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    overflow-y: scroll;
+}
+
+#overlay-intro .overlay-content::-webkit-scrollbar {
+    display: none;
+}
+
+#overlay-intro .overlay-content h1 {
+    margin-top: 0;
+    color: #007acc;
+    font-size: 2rem;
+}
+
+#overlay-intro .overlay-content p {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 1rem 0 1rem;
+}
+
+#overlay-intro .overlay-content button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#overlay-intro .overlay-content button:hover {
+    background: #005fa3;
+}
+
+#overlay-intro .overlay-content pre {
+    font-size: 0.7rem;
+    text-align: left;
+    background: #f4f4f4;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.vertical-separator {
+    width: 1px;
+    height: 24px;
+    background-color: #ccc;
+    margin: 0 0.5rem;
+}
