@@ -1,12 +1,3 @@
-This is the code repository for a research project executed at the TU/E.
-
-It provides a website with an arduino editor, compiler and some LEDs "hooked up". Alongside an avatar providing feedback. 
-It also provides two apis to store the data, and request feedback from the openAI api according to predesigned rules.
-
-It does not contain the needed api keys or requested domains, these have been stripped.
-
-The whole setup was hosted on a vps in different docker containers, and used subdomains of my main domain jessestrijker.com.
-
 # Arduino Programming Feedback Research Platform
 
 This repository contains the codebase for a research project at TU Eindhoven (TU/e) focused on studying perceived programming difficulty and the role of feedback in learning environments. The platform provides an interactive Arduino coding website with real-time feedback from AI-driven avatars, as well as APIs for feedback generation and data collection.
@@ -101,6 +92,10 @@ README.md
    - Copy `.env.example` to `.env` in both `Backend Api/` and `Middle Api/`.
    - Add your OpenAI API key and any required tokens/domains.
 
+4. **Alternatively:**
+   - Use docker containers with the package-lock.json files
+   - Start the containers with the correct ports
+   - Adapt the internal code to access the correct urls or ports
 ---
 
 ## Usage
